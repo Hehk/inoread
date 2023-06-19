@@ -1,0 +1,11 @@
+# dune
+_build
+.merlin
+*.install
+
+# npm
+node_modules
+
+# esy
+_esy
+esy.lock
