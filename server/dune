@@ -1,8 +1,3 @@
 (executable
  (name server)
- (libraries dream))
-
-(rule
- (targets server.ml)
- (deps server.eml.ml)
- (action (run dream_eml %{deps} --workspace %{workspace_root})))
+ (libraries dream tyxml))

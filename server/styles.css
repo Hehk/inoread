@@ -1,0 +1,26 @@
+/* TODO reduce this to super minimal subsset */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+:root {
+  --font-mono: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body.grid {
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 7px, rgba(0, 0, 0, 0.1) 8px, rgba(0,0,0,0) 8px),
+    linear-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 15px, rgba(0, 0, 0, 0.2) 16px) ;
+  background-position: top;
+  background-size: 1px 16px;
+  z-index: 3000;
+}
+
+.grid .sub-grid {
+  opacity: 1;
+}
+
+.bl-1 { @apply relative -top-[1px]; }
+.bl-2 { @apply relative -top-[2px]; }

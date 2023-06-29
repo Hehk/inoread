@@ -6,6 +6,5 @@ _build
 # npm
 node_modules
 
-# esy
-_esy
-esy.lock
+# build artifacts
+dist/
