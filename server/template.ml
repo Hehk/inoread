@@ -78,9 +78,9 @@ let grid =
     ~a:[ a_class [ container_class ] ]
     (List.init 6 ~f:(fun _ -> div ~a:[ a_class [ column_class ] ] []))
 
-
 let main_layout children =
-  html ~a:[ a_lang "en" ]
+  html
+    ~a:[ a_lang "en" ]
     (head
        (title (txt "I No Read"))
        [
@@ -92,7 +92,10 @@ let main_layout children =
                a_content "width=device-width, initial-scale=1";
              ]
            ();
-  link ~rel:[`Stylesheet] ~href:"https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" ();
+         link ~rel:[ `Stylesheet ]
+           ~href:
+             "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap"
+           ();
          link ~rel:[ `Stylesheet ] ~href:"/dist/styles.css" ();
          script ~a:[ a_src "/dist/grid.js"; a_async () ] (txt "");
        ])
