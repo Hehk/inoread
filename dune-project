@@ -6,4 +6,15 @@
 
 (generate_opam_files true)
 
-; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
+(source (github hehk/inoread))
+(authors "Kyle Henderson")
+(package
+  (name inoread)
+  (synopsis "my website")
+  (depends 
+    (melange (>= 1.0.0))
+    (dream (>= 1.0.0~alpha5))
+    (base (>= v0.16.1))
+    (tyxml (>= 4.5.0))
+    ))
+

@@ -6,6 +6,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "build": "./scripts/build.sh"
+  },
   "devDependencies": {
     "esbuild": "^0.18.10",
     "tailwindcss": "^3.3.2"

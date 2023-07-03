@@ -1,5 +1,6 @@
 (executable
  (name server)
+ (public_name server)
  (libraries dream tyxml base))
 
 (rule

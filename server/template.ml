@@ -121,9 +121,19 @@ let main_layout children =
 let centered children = div ~a:[ a_class [ "col-span-4 col-start-2" ] ] children
 
 module Tag = struct
-  let link ~href children = a ~a:[ a_href href; a_class ["-bl-2"; "mb-4"; "underline"; "underline-offset-2"] ] children
+  let link ~href children =
+    a
+      ~a:
+        [
+          a_href href;
+          a_class [ "-bl-2"; "mb-4"; "underline"; "underline-offset-2" ];
+        ]
+      children
+
   let p children = p ~a:[ a_class [ "text-black"; "-bl-2"; "mb-4" ] ] children
 
   let h2 children =
-    h2 ~a:[ a_class [ "text-2xl"; "mb-6"; "mt-6"; "first:mt-0"; "-bl-1" ] ] children
+    h2
+      ~a:[ a_class [ "text-2xl"; "mb-6"; "mt-6"; "first:mt-0"; "-bl-1" ] ]
+      children
 end
