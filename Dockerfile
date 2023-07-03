@@ -11,21 +11,20 @@ RUN opam install . --deps-only
 
 COPY --chown=opam:opam . .
 RUN opam exec -- dune build
+RUN opam exec -- dune build @melange
 
-FROM ocaml/opam:ubuntu-22.04-ocaml-4.14 as build-js
+FROM node:18-alpine as build-js
 
 WORKDIR /usr/src/app
-RUN sudo apt-get update && sudo apt-get install -y nodejs npm pkg-config libev-dev
 
 COPY package.json package-lock.json .
 RUN npm ci
 
-COPY --chown=opam:opam inoread.opam .
-RUN opam install . --deps-only
-
 COPY . .
+# required to get the melange generated code
+COPY --from=build-ocaml /home/opam/_build _build
 
-RUN npm run build
+RUN sh ./scripts/build.sh
 
 FROM ocaml/opam:alpine-ocaml-4.14 as run
 
