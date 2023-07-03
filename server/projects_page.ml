@@ -40,7 +40,7 @@ let previous_projects_section =
 
 let active_projects_section =
   let list = active_projects |> List.map project_to_html |> ul in
-  [ Tag.h2 [ txt "Previous Projects" ]; list ]
+  [ Tag.h2 [ txt "Active Projects" ]; list ]
 
 let content () =
   Template.centered (active_projects_section @ previous_projects_section)
