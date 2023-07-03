@@ -1,6 +1,8 @@
-(lang dune 3.7)
+(lang dune 3.8)
 
 (name inoread)
+
+(using melange 0.1)
 
 (generate_opam_files true)
 

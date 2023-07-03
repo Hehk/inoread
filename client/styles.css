@@ -1,14 +1,20 @@
 /* TODO reduce this to super minimal subsset */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap');
 
 :root {
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-serif: 'EB Garamond', serif;
   font-size: 16px;
+  font-family: var(--font-serif);
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  @apply bg-stone-100;
+  @apply text-stone-900;
+}
 
 body.grid {
   background-image: linear-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 7px, rgba(0, 0, 0, 0.1) 8px, rgba(0,0,0,0) 8px),
@@ -22,5 +28,7 @@ body.grid {
   opacity: 1;
 }
 
-.bl-1 { @apply relative -top-[1px]; }
-.bl-2 { @apply relative -top-[2px]; }
+.bl-1 { @apply relative top-[1px]; }
+.bl-2 { @apply relative top-[2px]; }
+.-bl-1 { @apply relative -top-[1px]; }
+.-bl-2 { @apply relative -top-[2px]; }

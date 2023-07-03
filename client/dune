@@ -1,0 +1,3 @@
+(melange.emit
+  (target client)
+  (module_systems es6))
