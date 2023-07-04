@@ -1,7 +1,9 @@
 (executable
  (name server)
  (public_name server)
- (libraries dream tyxml base))
+ (libraries dream tyxml base)
+ (preprocess
+  (pps lwt_ppx tyxml-ppx)))
 
 (rule
  (alias run)

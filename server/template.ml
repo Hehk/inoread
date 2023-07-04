@@ -1,72 +1,73 @@
-open Tyxml.Html
+open Tyxml
 open Base
 
-let header () =
-  header
-    ~a:
-      [
-        a_class
-          [
-            "container mx-auto max-w-3xl sm:grid sm:grid-cols-6 gap-4 pt-16 \
-             pb-14 px-4";
-          ];
-      ]
-    [
-      div
-        ~a:
-          [
-            a_class
-              [ "flex flex-row justify-between col-span-4 col-start-2 -bl-2" ];
-          ]
+let default_header () =
+  Html.(
+    header
+      ~a:
         [
-          h1
+          a_class
             [
-              a
-                ~a:
+              "container mx-auto max-w-3xl sm:grid sm:grid-cols-6 gap-4 pt-16 \
+               pb-14 px-4";
+            ];
+        ]
+      [
+        div
+          ~a:
+            [
+              a_class
+                [ "flex flex-row justify-between col-span-4 col-start-2 -bl-2" ];
+            ]
+          [
+            h1
+              [
+                a
+                  ~a:
+                    [
+                      a_href "/";
+                      a_class
+                        [
+                          "text-black hover:text-black hover:underline \
+                           underline-offset-2";
+                        ];
+                    ]
+                  [ txt "I No Read" ];
+              ];
+            ul
+              ~a:[ a_class [ "flex flex-row space-x-4" ] ]
+              [
+                li
                   [
-                    a_href "/";
-                    a_class
-                      [
-                        "text-black hover:text-black hover:underline \
-                         underline-offset-2";
-                      ];
-                  ]
-                [ txt "I No Read" ];
-            ];
-          ul
-            ~a:[ a_class [ "flex flex-row space-x-4" ] ]
-            [
-              li
-                [
-                  a
-                    ~a:
-                      [
-                        a_href "/writing";
-                        a_class
-                          [
-                            "text-black hover:text-black hover:underline \
-                             underline-offset-2";
-                          ];
-                      ]
-                    [ txt "Ideas" ];
-                ];
-              li
-                [
-                  a
-                    ~a:
-                      [
-                        a_href "/projects";
-                        a_class
-                          [
-                            "text-black hover:text-black hover:underline \
-                             underline-offset-2";
-                          ];
-                      ]
-                    [ txt "Projects" ];
-                ];
-            ];
-        ];
-    ]
+                    a
+                      ~a:
+                        [
+                          a_href "/writing";
+                          a_class
+                            [
+                              "text-black hover:text-black hover:underline \
+                               underline-offset-2";
+                            ];
+                        ]
+                      [ txt "Ideas" ];
+                  ];
+                li
+                  [
+                    a
+                      ~a:
+                        [
+                          a_href "/projects";
+                          a_class
+                            [
+                              "text-black hover:text-black hover:underline \
+                               underline-offset-2";
+                            ];
+                        ]
+                      [ txt "Projects" ];
+                  ];
+              ];
+          ];
+      ])
 
 let grid =
   let column_class = "border-l border-r border-black/20" in
@@ -74,58 +75,63 @@ let grid =
     "absolute max-w-3xl px-4 sm:grid sm:grid-cols-6 gap-4 inset-0 mx-auto \
      pointer-events-none opacity-0 sub-grid"
   in
-  div
-    ~a:[ a_class [ container_class ] ]
-    (List.init 6 ~f:(fun _ -> div ~a:[ a_class [ column_class ] ] []))
+  Html.(
+    div
+      ~a:[ a_class [ container_class ] ]
+      (List.init 6 ~f:(fun _ -> div ~a:[ a_class [ column_class ] ] [])))
+
+let font_link = 
+  let link = "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400&display=swap" in
+  let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890" in
+  link ^ "&text=" ^ alphabet
 
 let main_layout children =
-  html
-    ~a:[ a_lang "en" ]
-    (head
-       (title (txt "I No Read"))
-       [
-         meta ~a:[ a_charset "utf-8" ] ();
-         meta
-           ~a:
-             [
-               a_name "viewport";
-               a_content "width=device-width, initial-scale=1";
-             ]
-           ();
-         link ~rel:[ `Stylesheet ]
-           ~href:
-             "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap"
-           ();
-         link ~rel:[ `Stylesheet ] ~href:"/dist/styles.css" ();
-         script ~a:[ a_src "/dist/grid.js"; a_async () ] (txt "");
-       ])
-    (body
-       [
-         header ();
-         grid;
-         main
-           ~a:
-             [
-               a_class
-                 [
-                   "container";
-                   "mx-auto";
-                   "max-w-3xl";
-                   "px-4";
-                   "pb-16";
-                   "text-justify";
-                   "md";
-                   "sm:grid";
-                   "sm:grid-cols-6";
-                   "gap-4";
-                 ];
-             ]
-           children;
-       ])
+  let%html default_head =
+    {|<head>
+    <title>I No Read</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script async src="/dist/grid.js"></script>
+    <link rel="stylesheet" href="/dist/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link href="|}font_link{|" rel="stylesheet">
+  </head>|}
+  in
+  Html.(
+    html
+      ~a:[ a_lang "en" ]
+      default_head
+      (body
+         [
+           default_header ();
+           grid;
+           main
+             ~a:
+               [
+                 a_class
+                   [
+                     "container";
+                     "mx-auto";
+                     "max-w-3xl";
+                     "px-4";
+                     "pb-16";
+                     "text-justify";
+                     "md";
+                     "sm:grid";
+                     "sm:grid-cols-6";
+                     "gap-4";
+                   ];
+               ]
+             children;
+         ]))
 
-let centered children = div ~a:[ a_class [ "col-span-4 col-start-2" ] ] children
+let centered children =
+  Html.(div ~a:[ a_class [ "col-span-4 col-start-2" ] ] children)
 
 module Tag = struct
+  open Tyxml.Html
+
   let link ~href children =
     a
       ~a:

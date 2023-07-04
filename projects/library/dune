@@ -1,0 +1,3 @@
+(executable
+ (name gutenberg)
+ (libraries core core_unix.command_unix cohttp-lwt-unix lwt))
