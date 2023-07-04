@@ -1,3 +1,4 @@
+open Prelude
 open Template
 open Tyxml.Html
 
@@ -36,11 +37,13 @@ let project_to_html { name; link; description } =
 
 let previous_projects_section =
   let list = previous_projects |> List.map project_to_html |> ul in
-  [ Tag.h2 [ txt "Previous Projects" ]; list ]
+  let section = [ Tag.h2 [ txt "Previous Projects" ]; list ] in
+  html_list_to_string section
 
 let active_projects_section =
   let list = active_projects |> List.map project_to_html |> ul in
-  [ Tag.h2 [ txt "Active Projects" ]; list ]
+  let section = [ Tag.h2 [ txt "Active Projects" ]; list ] in
+  html_list_to_string section
 
 let content () =
-  Template.centered (active_projects_section @ previous_projects_section)
+  Template.centered (active_projects_section ^ previous_projects_section)

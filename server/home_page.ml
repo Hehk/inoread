@@ -1,3 +1,5 @@
+open Prelude
+
 let about =
   [
     "Hoi! I am a software engineer based in Austin, TX. I am current a \
@@ -8,5 +10,5 @@ let about =
 
 let content () =
   let open Tyxml.Html in
-  let about = List.map (fun x -> Template.Tag.p [ txt x ]) about in
-  Template.centered (about @ Projects_page.active_projects_section)
+  let about = about |> List.map (fun x -> Template.Tag.p [ txt x ]) |> html_list_to_string in
+  Template.centered (about ^ Projects_page.active_projects_section)

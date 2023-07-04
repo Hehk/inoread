@@ -1,9 +1,13 @@
 (executable
  (name server)
  (public_name server)
- (libraries dream tyxml base)
- (preprocess
-  (pps lwt_ppx tyxml-ppx)))
+ (libraries dream tyxml base))
+
+(rule
+ (targets template.ml)
+ (deps template.eml.ml)
+ (action
+  (run dream_eml %{deps} --workspace %{workspace_root})))
 
 (rule
  (alias run)
