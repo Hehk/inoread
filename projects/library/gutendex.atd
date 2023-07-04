@@ -1,0 +1,23 @@
+type person = {
+  name: string;
+  ?birth_year: int option;
+  ?death_year: int option;
+}
+
+type book = {
+  id: int;
+  title: string;
+  authors: person list;
+  translators: person list;
+  subjects: string list;
+  languages: string list;
+  media_type: string;
+  formats: (string * string) list <json repr="object">;
+}
+
+type books = {
+  count: int;
+  ?next: string option;
+  ?previous: string option;
+  results: book list;
+}

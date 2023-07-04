@@ -1,3 +1,17 @@
 (executable
- (name gutenberg)
- (libraries core core_unix.command_unix cohttp-lwt-unix lwt))
+ (name books)
+ (libraries core core_unix.command_unix cohttp-lwt-unix lwt yojson atdgen))
+
+(rule
+ (targets gutendex_j.ml gutendex_j.mli)
+ (deps gutendex.atd)
+ (mode fallback)
+ (action
+  (run atdgen -j %{deps})))
+
+(rule
+ (targets gutendex_t.ml gutendex_t.mli)
+ (deps gutendex.atd)
+ (mode fallback)
+ (action
+  (run atdgen -t %{deps})))
