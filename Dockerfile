@@ -1,4 +1,4 @@
-FROM ocaml/opam:alpine-ocaml-4.14 as build-ocaml
+FROM ocaml/opam:alpine-ocaml-5.0 as build-ocaml
 
 WORKDIR /home/opam
 
@@ -7,11 +7,11 @@ RUN apk add --no-cache openssl-dev libev-dev
 USER opam
 
 COPY --chown=opam:opam inoread.opam .
-RUN opam install . --deps-only
+RUN opam-2.2 install . --deps-only
 
 COPY --chown=opam:opam . .
-RUN opam exec -- dune build
-RUN opam exec -- dune build @melange
+RUN opam-2.2 exec -- dune build
+RUN opam-2.2 exec -- dune build @melange
 
 FROM node:18-alpine as build-js
 
@@ -24,9 +24,9 @@ COPY . .
 # required to get the melange generated code
 COPY --from=build-ocaml /home/opam/_build _build
 
-RUN sh ./scripts/build.sh
+RUN sh ./scripts/build-js.sh
 
-FROM ocaml/opam:alpine-ocaml-4.14 as run
+FROM ocaml/opam:alpine-ocaml-5.0 as run
 
 WORKDIR /home/opam
 

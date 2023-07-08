@@ -13,7 +13,7 @@ let toggle_grid event =
   let event = keyboardEventToJsObj event in
   if event##code == "KeyG" && event##ctrlKey then
     let body = bodyToJsObj body in
-    let _ = body##classList##toggle "grid" in
+    let _ = body##classList##toggle "baseline-grid" in
     true
   else true
 
