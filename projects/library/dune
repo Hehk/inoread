@@ -1,6 +1,6 @@
 (executable
  (name books)
- (libraries core core_unix.command_unix cohttp-lwt-unix lwt atdgen))
+ (libraries core core_unix.command_unix cohttp-lwt-unix lwt atdgen http))
 
 (rule
  (targets gutendex_j.ml gutendex_j.mli)
