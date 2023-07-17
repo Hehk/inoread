@@ -98,3 +98,4 @@ let get_epub (book : Gutendex_t.book) =
       Lwt_io.with_file ~mode:Lwt_io.output filename (fun output_channel ->
           Lwt_stream.iter_s (Lwt_io.write output_channel) stream)
       >>= fun () -> Lwt.return_some filename
+
