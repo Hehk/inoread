@@ -13,13 +13,15 @@
   (synopsis "my website")
   (depends 
     (melange (>= 1.0.0))
-    (dream (>= 1.0.0~alpha5))
     (base (>= v0.16.1))
     (tyxml (>= 4.5.0))
-    (core (>= v0.16.0))
-    (core_unix (>= v0.16.0))
-    (cohttp-lwt-unix (>= 5.1.0))
-    (cohttp-lwt-unix (>= 5.6.0))
-    (atdgen (>= 2.2.1))
+    dream
+    dream-livereload
+    core
+    core_unix
+    cohttp-lwt-unix
+    cohttp-lwt-unix
+    atdgen 
+
     ))
 

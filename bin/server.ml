@@ -2,6 +2,7 @@ let html_to_string html = Format.asprintf "%a" (Tyxml.Html.pp_elt ()) html
 
 let () =
   Dream.run ~interface:"0.0.0.0" ~port:8080
+  @@ Dream_livereload.inject_script () (* <-- *)
   @@ Dream.logger
   @@ Dream.router
        [
@@ -11,5 +12,8 @@ let () =
          Dream.get "/projects" (fun _ ->
              [ Projects_page.content () ]
              |> Template.main_layout |> html_to_string |> Dream.html);
+         ( Dream.get "/writing" @@ fun _ ->
+           [ Writing_page.content () ]
+           |> Template.main_layout |> html_to_string |> Dream.html );
          Dream.get "/dist/**" (Dream.static "./dist");
        ]

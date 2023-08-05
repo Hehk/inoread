@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: {
-    files: ["./server/**/*.ml"],
+    files: ["./bin/**/*.ml"],
   },
   theme: {
     extend: {

@@ -6,10 +6,10 @@ type project = { name : string; link : string; description : string }
 let active_projects =
   [
     {
-      name = "Falcon Resume";
-      link = "https://falconresume.com";
+      name = "Library";
+      link = "https://library.inoread.com";
       description =
-        "A website for creating resumes using conversation with an AI.";
+        "A website to search through the classics";
     };
     {
       name = "This Website";

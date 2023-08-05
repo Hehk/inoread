@@ -1,7 +1,7 @@
 (executable
  (name server)
  (public_name server)
- (libraries dream tyxml base))
+ (libraries dream dream-livereload tyxml base))
 
 (rule
  (alias run)

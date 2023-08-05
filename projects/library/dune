@@ -2,6 +2,11 @@
  (name books)
  (libraries core core_unix.command_unix cohttp-lwt-unix lwt atdgen http xml-light))
 
+; (executable
+;  (name server)
+;  (public_name server)
+;  (libraries dream dream-livereload tyxml base))
+
 (rule
  (targets gutendex_j.ml gutendex_j.mli)
  (deps gutendex.atd)
