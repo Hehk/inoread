@@ -20,7 +20,7 @@ let default_header () =
           ul
             ~a:[ a_class [ "flex flex-row space-x-4" ] ]
             [
-              li [ link "/writing" "Ideas" ]; li [ link "/projects" "Projects" ];
+              li [ link "/writing" "Writing" ]; li [ link "/projects" "Projects" ];
             ];
         ];
     ]

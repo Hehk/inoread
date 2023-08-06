@@ -35,6 +35,6 @@ RUN apk add --no-cache openssl libev
 USER opam
 
 COPY --from=build-js --chown=opam:opam /usr/src/app/dist dist
-COPY --from=build-ocaml --chown=opam:opam /home/opam/_build/default/server/server.exe server.exe
+COPY --from=build-ocaml --chown=opam:opam /home/opam/_build/default/bin/server.exe server.exe
 
 ENTRYPOINT ["./server.exe"]

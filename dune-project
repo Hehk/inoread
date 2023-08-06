@@ -22,6 +22,7 @@
     cohttp-lwt-unix
     cohttp-lwt-unix
     atdgen 
-
+    xml-light
+    http
     ))
 

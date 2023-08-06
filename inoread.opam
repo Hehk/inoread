@@ -16,6 +16,8 @@ depends: [
   "cohttp-lwt-unix"
   "cohttp-lwt-unix"
   "atdgen"
+  "xml-light"
+  "http"
   "odoc" {with-doc}
 ]
 build: [
